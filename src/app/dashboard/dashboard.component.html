@@ -1,3 +1,90 @@
-<div class="main">
-  <router-outlet></router-outlet>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-header bg-info">
+          <h3 class="card-title">All Books</h3>
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover mb-0">
+              <thead>
+                <tr>
+                  <th scope="col">Book Id</th>
+                  <th scope="col">Book Name</th>
+                  <th scope="col">Author</th>
+                  <th scope="col">Publication Date</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let book of allBooks; let i = index">
+                  <th scope="row">{{book.bookID}}</th>
+                  <td>{{book.title}}</td>
+                  <td>{{book.author}}</td>
+                  <td>{{book.publicationYear}}</td>
+                  <td>
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-primary" (click)="editBook(book.bookID)">Edit</button>
+                      <button type="button" class="btn btn-danger" (click)="deleteBook(book.bookID)">Delete</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-header bg-info">
+          <h3 class="card-title">All Readers</h3>
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover mb-0">
+              <thead>
+                <tr>
+                  <th scope="col">Reader Id</th>
+                  <th scope="col">Reader Name</th>
+                  <th scope="col">Total Mins. Read</th>
+                  <th scope="col">Weekly Reading Goal</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let reader of allReaders; let R_I = index">
+                  <th scope="row">{{reader.readerID}}</th>
+                  <td>{{reader.name}}</td>
+                  <td>{{reader.totalMinutesRead}}</td>
+                  <td>{{reader.weeklyReadingGoal}}</td>
+                  <td>
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-primary" (click)="editReader(reader.readerID)">Edit</button>
+                      <button type="button" class="btn btn-danger" (click)="deleteReader(reader.readerID)">Delete</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row my-5">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-header bg-info">
+          <h3 class="card-title">Most Popular Book</h3>
+        </div>
+        <div class="card-body">
+          {{mostPopularBook.title}} => <i class="text-muted">{{mostPopularBook.author}}</i>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
