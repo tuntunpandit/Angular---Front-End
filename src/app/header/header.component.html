@@ -1,0 +1,23 @@
+<div class="nav">
+  <input type="checkbox" id="nav-check">
+  <!-- <div class="nav-header">
+    <div class="nav-title">
+      BookTracker
+    </div>
+  </div> -->
+  <div class="nav-btn">
+    <label for="nav-check">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+
+  <div class="nav-links">
+    <ul class="p-0">
+        <li><a [routerLink]="['/dashboard']" routerLinkActive="active">Book Tracker</a></li>
+        <li><a [routerLink]="['/addbook']" routerLinkActive="active">Add Book</a></li>
+        <li><a [routerLink]="['/addreader']" routerLinkActive="active">Add Reader</a></li>
+    </ul>
+  </div>
+</div>
