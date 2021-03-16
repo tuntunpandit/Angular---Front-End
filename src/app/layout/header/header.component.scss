@@ -3,6 +3,7 @@
   width: 100%;
   background-color: #4d4d4d;
   position: relative;
+  z-index: 999;
 }
 
 .nav>.nav-header {
@@ -13,7 +14,7 @@
   display: inline-block;
   font-size: 22px;
   color: #fff;
-  padding: 10px 10px 10px 10px;
+  padding: 10px;
 }
 
 .nav>.nav-btn {
@@ -33,7 +34,7 @@
 
 li a {
   display: inline-block;
-  padding: 13px 10px 13px 10px;
+  padding: 12px 10px;
   text-decoration: none;
   color: #efefef;
 }
