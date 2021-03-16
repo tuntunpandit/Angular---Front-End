@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../core/data.service';
-import { Book } from '../models/book';
-import { Reader } from '../models/reader';
+import { DataService } from '../../../shared/services/data.service';
+import { Book } from '../../../models/book';
+import { Reader } from '../../../models/reader';
 
 @Component({
   selector: 'app-dashboard',
