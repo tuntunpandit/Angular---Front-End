@@ -13,17 +13,11 @@ export const appRoutes: Routes = [
     path: '',
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
     canActivate: [AdminGuard],
-    // data: {
-    //   preload: true,
-    // },
   },
   {
     path: '',
     loadChildren: () => import('./authentication/auth.module').then(m => m.AuthModule),
     canActivate: [AuthGuard],
-    // data: {
-    //   auth: true,
-    // },
   },
   {
     path: '**',
