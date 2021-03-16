@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 
@@ -8,6 +8,11 @@ export const autRoutes: Routes = [
   {
     path: '',
     children: [
+      {
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full'
+      },
       { 
         path: 'login',
         component: LoginComponent,
@@ -23,10 +28,11 @@ export const autRoutes: Routes = [
 @NgModule({
   declarations: [
     LoginComponent,
-    SignupComponent
+    SignupComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild(autRoutes),
   ]
 })
 export class AuthModule { }
