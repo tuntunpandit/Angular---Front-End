@@ -1,16 +1,18 @@
 <div class="container">
   <div class="forms-container">
     <div class="signin-signup">
-      <form class="sign-in-form">
+      <form class="sign-in-form" [formGroup]="loginForm">
         <h2 class="title">Sign in</h2>
         <div class="input-field">
-          <i class="fas fa-user"></i>
-          <input type="text" placeholder="Username" />
+          <i class="fas fa-envelope"></i>
+          <input type="email" formControlName="email" placeholder="Email" />
         </div>
+        <span *ngIf="isValid('email')" class="error">email is required</span>
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input type="password" placeholder="Password" />
+          <input type="password" formControlName="password" placeholder="Password" />
         </div>
+        <span *ngIf="isValid('password')" class="error">password is required</span>
         <input type="submit" value="Login" class="btn solid" (click)="login()" />
         <p class="social-text">Or Sign in with social platforms</p>
         <div class="social-media">

@@ -8,11 +8,18 @@
     </label>
   </div>
 
-  <div class="nav-links">
+  <div class="nav-links d-flex justify-content-between px-3 w-100 align-items-center">
     <ul class="p-0">
-        <li><a [routerLink]="['/dashboard']" routerLinkActive="active">Book Tracker</a></li>
-        <li><a [routerLink]="['/addbook']" routerLinkActive="active">Add Book</a></li>
-        <li><a [routerLink]="['/addreader']" routerLinkActive="active">Add Reader</a></li>
+      <li><a [routerLink]="['/dashboard']" routerLinkActive="active">Book Tracker</a></li>
+      <li><a [routerLink]="['/addbook']" routerLinkActive="active">Add Book</a></li>
+      <li><a [routerLink]="['/addreader']" routerLinkActive="active">Add Reader</a></li>
     </ul>
+
+    <ul class="p-0">
+      <li><button class="align-items-center btn btn-primary btn-sm d-flex justify-content-between px-3"
+          (click)="logout()">logout<i class="fas fa-sign-out-alt" style="margin-left: 10px;"></i></button>
+      </li>
+    </ul>
+
   </div>
 </div>
