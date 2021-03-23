@@ -1,21 +1,30 @@
 <div class="container sign-up-mode">
   <div class="forms-container">
     <div class="signin-signup">
-      <form class="sign-up-form">
+      <form class="sign-up-form" [formGroup]="regForm">
         <h2 class="title">Sign up</h2>
         <div class="input-field">
           <i class="fas fa-user"></i>
-          <input type="text" placeholder="Username" />
+          <input type="text" formControlName="username" placeholder="Username" />
         </div>
+        <span *ngIf="isValid('username')" class="error">username is required</span>
         <div class="input-field">
           <i class="fas fa-envelope"></i>
-          <input type="email" placeholder="Email" />
+          <input type="email" formControlName="email" placeholder="Email" />
         </div>
+        <span *ngIf="isValid('email')" class="error">email is required</span>
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input type="password" placeholder="Password" />
+          <input type="password" formControlName="password" placeholder="Password" />
         </div>
-        <input type="submit" class="btn" value="Sign up" />
+        <span *ngIf="isValid('password')" class="error">password is required</span>
+        <div class="input-field">
+          <i class="fas fa-lock"></i>
+          <input type="password" formControlName="cnfpass" placeholder="Confirm Password" />
+        </div>
+        <span *ngIf="isValid('cnfpass')" class="error">password & confirm password should
+          match</span>
+        <input type="submit" class="btn" value="Sign up" (click)="regiserUser()" />
         <p class="social-text">Or Sign up with social platforms</p>
         <div class="social-media">
           <a href="#" class="social-icon">

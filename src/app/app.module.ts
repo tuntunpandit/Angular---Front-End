@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 
 import { AuthGuard } from './guards/auth.guard';
 import { AdminGuard } from './guards/admin.guard';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthModule } from './authentication/auth.module';
+import { HttpClientModule } from '@angular/common/http';
 
 export const appRoutes: Routes = [
   {
@@ -24,7 +27,7 @@ export const appRoutes: Routes = [
     redirectTo: '',
     pathMatch: 'full'
   }
-  
+
 ]
 
 @NgModule({
@@ -35,7 +38,11 @@ export const appRoutes: Routes = [
     BrowserModule,
     NgbModule,
     RouterModule.forRoot(appRoutes),
-    // BrowserAnimationsModule
+    AuthModule,
+    // BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   exports: [RouterModule],
   providers: [],
