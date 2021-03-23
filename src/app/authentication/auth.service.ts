@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
 
@@ -15,7 +15,8 @@ export interface SignupData {
 })
 export class AuthService {
 
-  url: string = 'http//localhost:3000/api/register'
+
+  api_url: string = '/api/register';
   constructor(private _http: HttpClient) { }
 
   isUserLoggedIn() {
@@ -23,12 +24,23 @@ export class AuthService {
   }
 
   registerUser(formData: SignupData) {
-    return this._http.post(this.url, formData, { observe: 'body' }).pipe(
+    let headers = new HttpHeaders();
+    headers = headers.set('content-type', 'application/json')
+    headers = headers.set('Access-Control-Allow-Origin', '*');
+    console.log('formData::', formData);
+    return this._http.post(this.api_url, formData, { 'headers': headers }).pipe(
       catchError(err => {
         console.log(err);
-        // this.msgS.global({ type: 'danger', content: err.message });
         return EMPTY;
-      }))
+      }));
+
+  }
+  getUser() {
+    return this._http.get('/api/products').pipe(
+      catchError(err => {
+        console.log(err);
+        return EMPTY;
+      }));
 
   }
 

@@ -52,15 +52,8 @@ export class SignupComponent implements OnInit {
     if (this.regForm.invalid) {
       return;
     }
-    const formData: SignupData = {
-      username: this.regForm.value.username,
-      email: this.regForm.value.email,
-      password: this.regForm.value.password,
-      cnfpass: this.regForm.value.cnfpass,
-    }
-    this._authS.registerUser(formData).subscribe(res => {
+    this._authS.registerUser(this.regForm.value).subscribe(res => {
       console.log('Result', res);
-
     })
   }
 }
