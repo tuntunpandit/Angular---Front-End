@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     this._authS.loginUser(this.loginForm.value).subscribe(res => {
-      console.log("data", res);
+      console.log("loginData", res);
       localStorage.setItem('token', res.toString());
       this._router.navigate(['/dashboard']);
     })

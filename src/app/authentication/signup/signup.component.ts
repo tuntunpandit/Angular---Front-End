@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { AuthService, SignupData } from '../auth.service';
+import { Router } from '@angular/router';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-signup',
@@ -9,7 +11,7 @@ import { AuthService, SignupData } from '../auth.service';
 })
 export class SignupComponent implements OnInit {
   regForm: FormGroup;
-  constructor(private _authS: AuthService) {
+  constructor(private _authS: AuthService, private _router: Router) {
     this.regForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       username: new FormControl(null, Validators.required),
@@ -53,7 +55,9 @@ export class SignupComponent implements OnInit {
       return;
     }
     this._authS.registerUser(this.regForm.value).subscribe(res => {
-      console.log('Result', res);
+      console.log('registerData', res);
+      this._router.navigate(['/login']);
+      alert(`user created with ${res['email']}`);
     })
   }
 }

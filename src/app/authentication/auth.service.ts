@@ -36,6 +36,7 @@ export class AuthService {
     return this._http.post('/api/register', formData).pipe(
       catchError(err => {
         console.log(err);
+        alert(err.message);
         return EMPTY;
       }));
 
@@ -44,7 +45,7 @@ export class AuthService {
     return this._http.post('/api/login', formData).pipe(
       catchError(err => {
         console.log(err);
-        alert(err.error.message);
+        alert(err.message);
         return EMPTY;
       }));
   }
