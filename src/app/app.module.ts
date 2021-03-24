@@ -10,6 +10,11 @@ import { AdminGuard } from './guards/admin.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './authentication/auth.module';
 import { HttpClientModule } from '@angular/common/http';
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import {
+  GoogleLoginProvider,
+  FacebookLoginProvider
+} from 'angularx-social-login';
 
 export const appRoutes: Routes = [
   {
@@ -43,9 +48,27 @@ export const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    SocialLoginModule
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider('clientId')
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('clientId')
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

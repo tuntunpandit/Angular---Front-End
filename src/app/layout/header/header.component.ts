@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/authentication/auth.service';
+import { SocialLoginService } from 'src/app/authentication/social-login.service';
 
 @Component({
   selector: 'app-header',
@@ -8,13 +9,18 @@ import { AuthService } from 'src/app/authentication/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private _authS: AuthService) { }
+  constructor(private _authS: AuthService, private _socialService: SocialLoginService) { }
 
   ngOnInit(): void {
   }
 
   logout() {
-    this._authS.logoutUser();
+    if (this._socialService.isSocailMediaUserLoggedin()) {
+      this._socialService.logoutSocialUser();
+    } else {
+      this._authS.logoutUser();
+    }
+
   }
 }
 
