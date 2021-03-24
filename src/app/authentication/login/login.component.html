@@ -17,16 +17,16 @@
         <p class="social-text">Or Sign in with social platforms</p>
         <div class="social-media">
           <a href="#" class="social-icon">
-            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-facebook-f" (click)="socialSignIn('facebook')"></i>
           </a>
           <a href="#" class="social-icon">
             <i class="fab fa-twitter"></i>
           </a>
-          <a href="#" class="social-icon">
+          <a class="social-icon" (click)="socialSignIn('google')">
             <i class="fab fa-google"></i>
           </a>
           <a href="#" class="social-icon">
-            <i class="fab fa-linkedin-in"></i>
+            <i class="fab fa-linkedin-in" (click)="socialSignIn('linkedin')"></i>
           </a>
         </div>
       </form>

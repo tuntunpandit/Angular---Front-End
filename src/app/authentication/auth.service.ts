@@ -28,11 +28,7 @@ export class AuthService {
   }
 
   registerUser(formData: SignupData) {
-    // let headers = new HttpHeaders();
-    // headers = headers.set('content-type', 'application/json')
-    // headers = headers.set('Access-Control-Allow-Origin', '*');
     console.log('formData::', formData);
-    // add this in post method  { 'headers': headers }
     return this._http.post('/api/register', formData).pipe(
       catchError(err => {
         console.log(err);
