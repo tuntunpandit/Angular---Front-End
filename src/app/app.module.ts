@@ -59,7 +59,7 @@ export const appRoutes: Routes = [
         providers: [
           {
             id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider('clientId')
+            provider: new GoogleLoginProvider('537943022068-dkkinli9520snhhig4besj4clqi79e3s.apps.googleusercontent.com')
           },
           {
             id: FacebookLoginProvider.PROVIDER_ID,
