@@ -10,10 +10,11 @@ import { AdminGuard } from './guards/admin.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './authentication/auth.module';
 import { HttpClientModule } from '@angular/common/http';
-import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import {
   GoogleLoginProvider,
-  FacebookLoginProvider
+  FacebookLoginProvider,
+  SocialLoginModule,
+  SocialAuthServiceConfig
 } from 'angularx-social-login';
 
 export const appRoutes: Routes = [

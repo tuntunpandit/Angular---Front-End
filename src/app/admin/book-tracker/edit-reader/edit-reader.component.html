@@ -1,1 +1,31 @@
-<p>edit-reader works!</p>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header bg-info d-flex align-items-center">
+                    <h3 class="card-title">Add Reader</h3>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="readerForm">
+                        <div class="form-group mb-3">
+                            <label for="readerName">Reader Name</label>
+                            <input type="text" class="form-control" id="readerName" formControlName="name"
+                                placeholder="Enter reader name">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="weeklyGoal">Weekly Reading Goal</label>
+                            <input type="text" class="form-control" id="weeklyGoal" formControlName="weeklyReadingGoal"
+                                placeholder="Enter reading goal">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="totalMins">Total Mins. Read</label>
+                            <input type="text" class="form-control" id="totalMins" formControlName="totalMinutesRead"
+                                placeholder="Enter reading time">
+                        </div>
+                        <button class="btn btn-success mb-3" type="submit" (click)="updateReader()">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -57,7 +57,7 @@
  */
 import 'zone.js/dist/zone';  // Included with Angular CLI.
 
-
+import '@angular/localize/init'  // Angular 9 introduced a global $localize() function that needs to be loaded if you use i18n.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */

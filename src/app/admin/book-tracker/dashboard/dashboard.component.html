@@ -19,14 +19,14 @@
               </thead>
               <tbody>
                 <tr *ngFor="let book of allBooks; let i = index">
-                  <th scope="row">{{book.bookID}}</th>
+                  <th scope="row">{{i+1}}</th>
                   <td>{{book.title}}</td>
                   <td>{{book.author}}</td>
                   <td>{{book.publicationYear}}</td>
                   <td>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-primary" (click)="editBook(book.bookID)">Edit</button>
-                      <button type="button" class="btn btn-danger" (click)="deleteBook(book.bookID)">Delete</button>
+                      <button type="button" class="btn btn-primary" (click)="editBook(book._id)">Edit</button>
+                      <button type="button" class="btn btn-danger" (click)="deleteBook(book._id)">Delete</button>
                     </div>
                   </td>
                 </tr>
@@ -57,14 +57,14 @@
               </thead>
               <tbody>
                 <tr *ngFor="let reader of allReaders; let R_I = index">
-                  <th scope="row">{{reader.readerID}}</th>
+                  <th scope="row">{{R_I + 1}}</th>
                   <td>{{reader.name}}</td>
                   <td>{{reader.totalMinutesRead}}</td>
                   <td>{{reader.weeklyReadingGoal}}</td>
                   <td>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-primary" (click)="editReader(reader.readerID)">Edit</button>
-                      <button type="button" class="btn btn-danger" (click)="deleteReader(reader.readerID)">Delete</button>
+                      <button type="button" class="btn btn-primary" (click)="editReader(reader._id)">Edit</button>
+                      <button type="button" class="btn btn-danger" (click)="deleteReader(reader._id)">Delete</button>
                     </div>
                   </td>
                 </tr>
