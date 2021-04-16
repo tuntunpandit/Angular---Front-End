@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Book } from 'src/app/models/book';
-import { allBooks } from 'src/app/data';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
@@ -31,15 +30,15 @@ export class BookService {
       )
   }
   //get book by id
-  getBookDataById(bookId: string): Observable<Book | customError> {
-    return this._http.get<Book>('api/getReaderById', bookId)
-      .pipe(
-        catchError(err => {
-          alert(err.message);
-          return EMPTY;
-        })
-      )
-  }
+  // getBookDataById(bookId: string): Observable<Book | customError> {
+  //   return this._http.get<Book>('api/getReaderById', bookId)
+  //     .pipe(
+  //       catchError(err => {
+  //         alert(err.message);
+  //         return EMPTY;
+  //       })
+  //     )
+  // }
   // add reader
   addReader(readerData: Partial<Reader>) {
     return this._http.post('/api/addReader', readerData).pipe(
@@ -56,15 +55,15 @@ export class BookService {
       )
   }
   // get reader by id
-  getReaderDataById(readerId: string): Observable<Reader | customError> {
-    return this._http.get<Reader>('api/updateReader', readerId)
-      .pipe(
-        catchError(err => {
-          alert(err.message);
-          return EMPTY;
-        })
-      )
-  }
+  // getReaderDataById(readerId: string): Observable<Reader | customError> {
+  //   return this._http.get<Reader>('api/updateReader', readerId)
+  //     .pipe(
+  //       catchError(err => {
+  //         alert(err.message);
+  //         return EMPTY;
+  //       })
+  //     )
+  // }
   //handle http errors
   private handleError(error: HttpErrorResponse): Observable<customError> {
     let dataError = new customError();

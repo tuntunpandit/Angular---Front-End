@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../../shared/services/data.service';
 import { Book } from '../../../models/book';
 import { Reader } from '../../../models/reader';
 import { BookService } from '../book.service';
 import { Router } from '@angular/router';
 import { customError } from 'src/app/models/bookTrackerError';
-
+import { ajax } from 'rxjs/ajax';
+import { map, filter, concatMap, switchMap, reduce } from 'rxjs/operators';
+import { from, fromEvent } from 'rxjs';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -21,11 +22,58 @@ export class DashboardComponent implements OnInit {
     publicationYear: null
   };
 
-  constructor(private _dataS: DataService, private _bookService: BookService, private _router: Router) { }
+  constructor(private _bookService: BookService, private _router: Router) { }
 
   ngOnInit() {
+    this.rxjsFunctions();
     this.getAllData();
   }
+
+  rxjsFunctions() {
+    /** ---------------------------------------------------
+     ajax operator will make an ajax request for the given URL.
+    --------------------------------------------------- **/
+    const data = ajax('https://jsonplaceholder.typicode.com/users')
+      .pipe(
+        map(items => items.response),
+        // filter(item => item.id > 2)
+        // reduce((sum, id) => sum + id, 0)
+      );
+    data.subscribe(d => {
+      console.log('Ajax Data', d);
+    })
+
+    /** ---------------------------------------------------
+    This operator will create an observable from an array, an array-like object, a promise, an iterable object, or an observable-like object.
+    ------------------------------------------------------  **/
+    let arr = [1, 2, 3, 4, 5];
+    from(arr).subscribe(data => {
+      console.log('From Observable:', data);
+    })
+
+
+    const ele = document.getElementById('rxjs');
+    console.log('ele', ele);
+    let hovEvent = fromEvent(ele, 'click');
+    hovEvent.subscribe(data => { 
+      console.log('hover data', data);
+    })
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   getAllData() {
     this.getAllBooks();
@@ -47,7 +95,6 @@ export class DashboardComponent implements OnInit {
   }
 
   getAllReaders() {
-    // this.allReaders = this._dataS.getAllReaders();
     this._bookService.getAllReadersFromApi()
       .subscribe(
         (data: Reader[]) => {

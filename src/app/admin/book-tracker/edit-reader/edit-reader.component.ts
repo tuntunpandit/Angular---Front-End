@@ -27,12 +27,12 @@ export class EditReaderComponent implements OnInit {
       this.readerId = params.get('id');
     });
 
-    this.bookService.getReaderDataById(this.readerId)
-      .subscribe(
-        (res: Reader) => {
-          console.log("Reader by id", res);
-        }
-      )
+    // this.bookService.getReaderDataById(this.readerId)
+    //   .subscribe(
+    //     (res: Reader) => {
+    //       console.log("Reader by id", res);
+    //     }
+    //   )
   }
 
   updateReader() {

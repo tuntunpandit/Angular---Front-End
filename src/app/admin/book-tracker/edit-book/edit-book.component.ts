@@ -26,11 +26,10 @@ export class EditBookComponent implements OnInit {
       this.bookId = params.get('id');
     });
 
-    this.bookService.getBookDataById(this.bookId)
-      .subscribe((bookData: Book) => {
-        console.log('Book Data', bookData);
-        // this.bookForm =
-      })
+    // this.bookService.getBookDataById(this.bookId)
+    //   .subscribe((bookData: Book) => {
+    //     console.log('Book Data', bookData);
+    //   })
   }
 
   updateBook() {
