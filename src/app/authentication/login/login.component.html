@@ -1,51 +1,57 @@
 <div class="container">
-  <div class="forms-container">
-    <div class="signin-signup">
-      <form class="sign-in-form" [formGroup]="loginForm">
-        <h2 class="title">Sign in</h2>
-        <div class="input-field">
-          <i class="fas fa-envelope"></i>
-          <input type="email" formControlName="email" placeholder="Email" />
+  <section class="loginSection">
+    <div class="row">
+      <div class="card d-flex flex-row p-0">
+        <div class="col-md-5">
+          <div class="left-side">
+            <img class="h-100 w-100" src="https://picsum.photos/seed/picsum/200/300" alt="login" style="
+            object-fit: cover;" />
+          </div>
         </div>
-        <span *ngIf="isValid('email')" class="error">email is required</span>
-        <div class="input-field">
-          <i class="fas fa-lock"></i>
-          <input type="password" formControlName="password" placeholder="Password" />
+        <div class="col-md-7">
+          <div class="p-5 right-side h-100 w-100">
+            <form [formGroup]="loginForm">
+              <h5 class="text-center">Sign in</h5>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" id="email" formControlName="email"
+                  placeholder="Email" required />
+              </div>
+              <span *ngIf="isValid('email')" class="error">email is required</span>
+              <div class="form-group mt-2">
+                <label for="password">Password</label>
+                <input type="text" class="form-control" name="password" id="password" formControlName="password"
+                  placeholder="Password" required>
+              </div>
+              <span *ngIf="isValid('password')" class="error">password is required</span>
+            </form>
+            <button class="btn btn-success w-100 mt-3" (click)="login()">Sign in</button>
+            <div class="social-medias mt-2">
+              <p class="social-text">Or Sign in with social platforms</p>
+              <div class="social-media d-flex justify-content-center">
+                <a href="#" class="social-icon">
+                  <i class="fab fa-facebook-f" (click)="socialSignIn('facebook')"></i>
+                </a>
+                <!-- <a href="#" class="social-icon">
+                                                <i class="fab fa-twitter"></i>
+                                              </a> -->
+                <a href="#" class="social-icon" (click)="socialSignIn('google')">
+                  <i class="fab fa-google"></i>
+                </a>
+                <a href="#" class="social-icon">
+                  <i class="fab fa-linkedin-in" (click)="socialSignIn('linkedin')"></i>
+                </a>
+              </div>
+            </div>
+            <div class="align-items-center d-flex mt-3">
+              <p class="mb-0">New here ?</p>
+              <a class="px-3" id="sign-up-btn" [routerLink]="['/signup']">
+                Sign up
+              </a>
+            </div>
+          </div>
         </div>
-        <span *ngIf="isValid('password')" class="error">password is required</span>
-        <input type="submit" value="Login" class="btn solid" (click)="login()" />
-        <p class="social-text">Or Sign in with social platforms</p>
-        <div class="social-media">
-          <a href="#" class="social-icon">
-            <i class="fab fa-facebook-f" (click)="socialSignIn('facebook')"></i>
-          </a>
-          <a href="#" class="social-icon">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a class="social-icon" (click)="socialSignIn('google')">
-            <i class="fab fa-google"></i>
-          </a>
-          <a href="#" class="social-icon">
-            <i class="fab fa-linkedin-in" (click)="socialSignIn('linkedin')"></i>
-          </a>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <div class="left-panel-container">
-    <div class="panel left-panel">
-      <div class="content">
-        <h3>New here ?</h3>
-        <p>
-          “Let us take you into a deeper experience, make a moment a lasting conveyable memory. Let us help build your
-          tribe.”
-        </p>
-        <button class="btn transparent" id="sign-up-btn" [routerLink]="['/signup']">
-          Sign up
-        </button>
       </div>
-      <img src="../../../assets/img/log.svg" class="image" alt="" />
     </div>
-  </div>
+  </section>
 </div>

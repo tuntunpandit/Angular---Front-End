@@ -1,61 +1,54 @@
-<div class="container sign-up-mode">
-  <div class="forms-container">
-    <div class="signin-signup">
-      <form class="sign-up-form" [formGroup]="regForm">
-        <h2 class="title">Sign up</h2>
-        <div class="input-field">
-          <i class="fas fa-user"></i>
-          <input type="text" formControlName="username" placeholder="Username" />
-        </div>
-        <span *ngIf="isValid('username')" class="error">username is required</span>
-        <div class="input-field">
-          <i class="fas fa-envelope"></i>
-          <input type="email" formControlName="email" placeholder="Email" />
-        </div>
-        <span *ngIf="isValid('email')" class="error">email is required</span>
-        <div class="input-field">
-          <i class="fas fa-lock"></i>
-          <input type="password" formControlName="password" placeholder="Password" />
-        </div>
-        <span *ngIf="isValid('password')" class="error">password is required</span>
-        <div class="input-field">
-          <i class="fas fa-lock"></i>
-          <input type="password" formControlName="cnfpass" placeholder="Confirm Password" />
-        </div>
-        <span *ngIf="isValid('cnfpass')" class="error">password & confirm password should
-          match</span>
-        <input type="submit" class="btn" value="Sign up" (click)="regiserUser()" />
-        <p class="social-text">Or Sign up with social platforms</p>
-        <div class="social-media">
-          <a href="#" class="social-icon">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="#" class="social-icon">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="#" class="social-icon">
-            <i class="fab fa-google"></i>
-          </a>
-          <a href="#" class="social-icon">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-        </div>
-      </form>
-    </div>
-  </div>
+<div class="container">
+  <section class="signupSection">
+    <div class="row">
+      <div class="card d-flex flex-row p-0">
+        <div class="col-md-7">
+          <div class="h-100 w-100 p-5 right-side ">
+            <form [formGroup]="regForm">
+              <h5 class="text-center">Sign up</h5>
 
-  <div class="right-panel-container">
-    <div class="panel right-panel">
-      <div class="content">
-        <h3>One of us ?</h3>
-        <p>
-          “Website without visitors is like a ship lost in the horizon.”
-        </p>
-        <button class="btn transparent" id="sign-in-btn" [routerLink]="['/login']">
-          Sign in
-        </button>
+              <div class="form-group mt-2">
+                <label for="userName">User Name</label>
+                <input type="text" class="form-control" name="userName" id="userName" formControlName="username"
+                  placeholder="user name" required />
+              </div>
+              <span *ngIf="isValid('username')" class="error">username is required</span>
+              <div class="form-group mt-2">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" id="email" formControlName="email"
+                  placeholder="Email" required />
+              </div>
+              <span *ngIf="isValid('email')" class="error">email is required</span>
+              <div class="form-group mt-2">
+                <label for="password">Password</label>
+                <input type="text" class="form-control" name="password" id="password" formControlName="password"
+                  placeholder="Password" required>
+              </div>
+              <span *ngIf="isValid('password')" class="error">password is required</span>
+              <div class="form-group mt-2">
+                <label for="cnfpass">Password</label>
+                <input type="text" class="form-control" name="cnfpass" id="cnfpass" formControlName="cnfpass"
+                  placeholder="confirm password" required>
+              </div>
+              <span *ngIf="isValid('cnfpass')" class="error">password & confirm password should
+                match</span>
+            </form>
+            <button class="btn btn-success w-100 mt-2" (click)="regiserUser()">Sign in</button>
+            <div class="align-items-center d-flex mt-3">
+              <p class="mb-0">Already a user?</p>
+              <a class="px-3" id="sign-up-btn" [routerLink]="['/login']">
+                Sign in
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="left-side">
+            <img class="h-100 w-100" src="https://picsum.photos/seed/picsum/200/300" alt="login" style="
+              object-fit: cover;" />
+          </div>
+        </div>
       </div>
-      <img src="../../../assets/img/register.svg" class="image" alt="" />
     </div>
-  </div>
+  </section>
 </div>
