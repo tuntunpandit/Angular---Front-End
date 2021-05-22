@@ -14,14 +14,14 @@ export class SignupComponent implements OnInit {
   constructor(private _authS: AuthService, private _router: Router) {
     this.regForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
-      username: new FormControl(null, Validators.required),
+      name: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required),
-      cnfpass: new FormControl(null, this.passwordValidator),
+      cnf_password: new FormControl(null, this.passwordValidator),
     });
 
     this.regForm.controls.password.valueChanges
       .subscribe(
-        x => this.regForm.controls.cnfpass.updateValueAndValidity()
+        x => this.regForm.controls.cnf_password.updateValueAndValidity()
       )
   }
 
@@ -54,10 +54,11 @@ export class SignupComponent implements OnInit {
     if (this.regForm.invalid) {
       return;
     }
+    console.log('registerData', this.regForm.value);
     this._authS.registerUser(this.regForm.value).subscribe(res => {
       console.log('registerData', res);
       this._router.navigate(['/login']);
-      alert(`user created with ${res['email']}`);
+      alert(`Account created successfully`);
     })
   }
 }

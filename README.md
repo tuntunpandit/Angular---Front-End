@@ -8,10 +8,12 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 
 ## Future Plans ----------
-` 
+`
 1. Login, Logout Authentication
 2. Make a E-com page & apply payment method
-3. Create a working send Email 
+3. Create a working send Email
 4. Create a chatbot
-5. Create a LMS 
+5. Create a LMS
+
+  <!-- "start": "ng serve --proxy-config proxy.config.json", -->
 `

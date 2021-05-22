@@ -4,7 +4,7 @@
       <div class="card d-flex flex-row p-0">
         <div class="col-md-5">
           <div class="left-side">
-            <img class="h-100 w-100" src="https://picsum.photos/seed/picsum/200/300" alt="login" style="
+            <img class="h-100 w-100" src="../../../assets/img/BookTracker.png" alt="login" style="
             object-fit: cover;" />
           </div>
         </div>
@@ -26,23 +26,6 @@
               <span *ngIf="isValid('password')" class="error">password is required</span>
             </form>
             <button class="btn btn-success w-100 mt-3" (click)="login()">Sign in</button>
-            <div class="social-medias mt-2">
-              <p class="social-text">Or Sign in with social platforms</p>
-              <div class="social-media d-flex justify-content-center">
-                <a href="#" class="social-icon">
-                  <i class="fab fa-facebook-f" (click)="socialSignIn('facebook')"></i>
-                </a>
-                <!-- <a href="#" class="social-icon">
-                                                <i class="fab fa-twitter"></i>
-                                              </a> -->
-                <a href="#" class="social-icon" (click)="socialSignIn('google')">
-                  <i class="fab fa-google"></i>
-                </a>
-                <a href="#" class="social-icon">
-                  <i class="fab fa-linkedin-in" (click)="socialSignIn('linkedin')"></i>
-                </a>
-              </div>
-            </div>
             <div class="align-items-center d-flex mt-3">
               <p class="mb-0">New here ?</p>
               <a class="px-3" id="sign-up-btn" [routerLink]="['/signup']">

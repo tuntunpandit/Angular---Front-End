@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, Provider } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
@@ -8,14 +8,8 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AdminGuard } from './guards/admin.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthModule } from './authentication/auth.module';
-import { HttpClientModule } from '@angular/common/http';
-import {
-  GoogleLoginProvider,
-  FacebookLoginProvider,
-  SocialLoginModule,
-  SocialAuthServiceConfig
-} from 'angularx-social-login';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './authentication/token.interceptor';
 
 export const appRoutes: Routes = [
   {
@@ -36,6 +30,12 @@ export const appRoutes: Routes = [
 
 ]
 
+const providers: Provider[] = [
+  { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+  // { provide: HAMMER_LOADER, useFactory: LoadHammer },
+  AuthGuard,
+  AdminGuard
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,32 +44,13 @@ export const appRoutes: Routes = [
     BrowserModule,
     NgbModule,
     RouterModule.forRoot(appRoutes),
-    AuthModule,
-    // BrowserAnimationsModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SocialLoginModule
   ],
   exports: [RouterModule],
-  providers: [
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider('537943022068-dkkinli9520snhhig4besj4clqi79e3s.apps.googleusercontent.com')
-          },
-          {
-            id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('clientId')
-          }
-        ]
-      } as SocialAuthServiceConfig,
-    }
-  ],
+  providers: [providers],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,11 +8,11 @@
               <h5 class="text-center">Sign up</h5>
 
               <div class="form-group mt-2">
-                <label for="userName">User Name</label>
-                <input type="text" class="form-control" name="userName" id="userName" formControlName="username"
+                <label for="name">User Name</label>
+                <input type="text" class="form-control" name="name" id="name" formControlName="name"
                   placeholder="user name" required />
               </div>
-              <span *ngIf="isValid('username')" class="error">username is required</span>
+              <span *ngIf="isValid('name')" class="error">username is required</span>
               <div class="form-group mt-2">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" name="email" id="email" formControlName="email"
@@ -26,11 +26,11 @@
               </div>
               <span *ngIf="isValid('password')" class="error">password is required</span>
               <div class="form-group mt-2">
-                <label for="cnfpass">Password</label>
-                <input type="text" class="form-control" name="cnfpass" id="cnfpass" formControlName="cnfpass"
-                  placeholder="confirm password" required>
+                <label for="cnf_password">Password</label>
+                <input type="text" class="form-control" name="cnf_password" id="cnf_password"
+                  formControlName="cnf_password" placeholder="confirm password" required>
               </div>
-              <span *ngIf="isValid('cnfpass')" class="error">password & confirm password should
+              <span *ngIf="isValid('cnf_password')" class="error">password & confirm password should
                 match</span>
             </form>
             <button class="btn btn-success w-100 mt-2" (click)="regiserUser()">Sign in</button>
@@ -44,7 +44,7 @@
         </div>
         <div class="col-md-5">
           <div class="left-side">
-            <img class="h-100 w-100" src="https://picsum.photos/seed/picsum/200/300" alt="login" style="
+            <img class="h-100 w-100" src="../../../assets/img/BookTracker.png" alt="login" style="
               object-fit: cover;" />
           </div>
         </div>
